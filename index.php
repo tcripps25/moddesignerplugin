@@ -8,7 +8,7 @@ $PAGE->set_title('Module Designer');
 $PAGE->set_heading('Module Designer');
 
 // Require JavaScript for Vue App
-$PAGE->requires->js_call_amd('local_moddesigner/bundle', 'init');
+$PAGE->requires->js_call_amd('local_moddesigner/amd/build/assets/main-CDVQF4_8');
 
 echo $OUTPUT->header();
 
