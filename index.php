@@ -8,11 +8,11 @@ $PAGE->set_title('Module Designer');
 $PAGE->set_heading('Module Designer');
 
 // Require JavaScript for Vue App
-$PAGE->requires->js_call_amd('local_moddesigner/designer', 'init');
+$PAGE->requires->js_call_amd('local_moddesigner/bundle', 'init');
 
 echo $OUTPUT->header();
 
-// Vue mount point
-echo '<div id="app"></div>';
+// Render the Mustache template for mounting Vue
+echo $OUTPUT->render_from_template('local_moddesigner/app_mount', []);
 
 echo $OUTPUT->footer();
