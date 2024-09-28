@@ -5,7 +5,7 @@ require_once('../../config.php');
 $PAGE->set_url(new moodle_url('/local/moddesigner/index.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Module Designer');
-$PAGE->set_heading('Module Designer');
+$PAGE->set_heading('');
 
 // Require JavaScript for Vue App
 $PAGE->requires->js_call_amd('local_moddesigner/bundle');

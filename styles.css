@@ -1,6 +1,12 @@
 
-
+#page-header {
+    display: none !important;
+}
 
 #page.drawers, div[role="main"], .main-inner {
     padding: 0px !important;
+}
+
+.main-inner {
+    margin-top: 0px !important;
 }
