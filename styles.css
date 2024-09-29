@@ -1,12 +1,16 @@
 
-#page-header {
+body.path-local-moddesigner #page {
+    overflow: hidden;
+}
+
+body.path-local-moddesigner #page-header {
     display: none !important;
 }
 
-#page.drawers, div[role="main"], .main-inner {
+body.path-local-moddesigner #page.drawers, body.path-local-moddesigner div[role="main"], body.path-local-moddesigner .main-inner {
     padding: 0px !important;
 }
 
-.main-inner {
+body.path-local-moddesigner .main-inner {
     margin-top: 0px !important;
 }
