@@ -15,17 +15,17 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * classes for moddesigner.
  *
  * @package     local_moddesigner
  * @copyright   2024 Tom Cripps <tom.cripps@port.ac.uk>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace local_moddesigner\output;
 
-$plugin->component = 'local_moddesigner';
-$plugin->release = '0.1.0';
-$plugin->version = 2024092600;
-$plugin->requires = 2022112800;
-$plugin->maturity = MATURITY_ALPHA;
+class HelloWorld {
+    public static function hello() {
+        return 'hello';
+    }
+}
