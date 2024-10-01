@@ -64,6 +64,14 @@
          switch ($moduleName) {
              case 'assign':
                  return 'Assignment';
+             case 'url':
+                 return 'URL';
+             case 'h5pactivity':
+                 return 'H5P Activity';
+             case 'imscp':
+                return 'IMSCP';
+             case 'lti':
+                return 'LTI';
              // Add more cases as needed
              default:
                  return ucfirst($moduleName);
