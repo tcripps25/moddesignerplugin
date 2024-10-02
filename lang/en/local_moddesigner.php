@@ -38,6 +38,8 @@ $string['form_activity_group_label'] = 'Group';
 $string['form_activity_group_help'] = 'Is this a group Activity?';
 $string['form_activity_type_label'] = 'Learning Type';
 $string['form_activity_type_help'] = 'Select one or more Learning Types for this Activity.';
+$string['form_activity_mode_label'] = 'Learning Mode';
+$string['form_activity_mode_help'] = 'Select the way your Activity will primarily be taught.';
 
 $string['steppaneltitle2'] = 'Learning Approach';
 $string['steppaneltitle3'] = 'Moodle Activities';
