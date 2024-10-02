@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { RouterView } from "vue-router";
 import 'primeicons/primeicons.css'
 import MainSidebar from "@/components/MainSidebar.vue"
@@ -10,7 +10,10 @@ import axios from "axios";
 import { useCourseStore } from '@/stores/course.js';
 const course = useCourseStore();
 
-const buildClasses = process.env.NODE_ENV === 'production' ? '-mt-[60px] pt-[60px]' : '';
+
+const buildMode = ref(process.env.NODE_ENV === 'production');
+
+const buildClasses = buildMode.value ? '-mt-[60px] pt-[60px]' : '';
 
 let baseURL = '';
 
@@ -25,14 +28,17 @@ async function fetchModules() {
   }
 }
 
+
 // onMounted lifecycle hook
 onMounted(() => {
-  require(['core/config'], function (config) {
-    const baseURL = config.wwwroot;
-    console.log(baseURL); // Moodle base URL
-  });
+  if (buildMode.value) {
+    require(['core/config'], function (config) {
+      const baseURL = config.wwwroot;
+      console.log(baseURL); // Moodle base URL
+    });
 
-  fetchModules(); // Fetch the modules when the component is mounted
+    fetchModules(); // Fetch the modules when the component is mounted
+  }
 });
 
 </script>

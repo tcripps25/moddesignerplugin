@@ -5,6 +5,7 @@ import { useCourseStore } from '@/stores/course.js';
 import MenuItem from './MenuItem.vue';
 import Pbutton from '../buttons/Pbutton.vue';
 import { PlusIcon } from '@heroicons/vue/16/solid';
+import MoodleString from '../helpers/MoodleString.vue';
 const course = useCourseStore();
 
 const designmenutitle = useFetchMoodleString('designmenutitle1', 'Design Menu Title');

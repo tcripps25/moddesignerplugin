@@ -7,12 +7,15 @@ const props = defineProps({
     altString: String,
 })
 
+// establish build mode or not
+const buildMode = ref(process.env.NODE_ENV === 'production');
+
 // Define reactive variables to store the language strings
 const fetchedString = ref('');
 
 // Check if the environment is production and load core/str using RequireJS only in build
 onBeforeMount(() => {
-    if (import.meta.env.MODE === 'production') {
+    if (buildMode.value) {
         // Only run in production (during build)
         require(['core/str'], function (str) {
             str.get_string(props.getString, 'local_moddesigner').done(function (result) {
