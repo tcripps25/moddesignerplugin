@@ -1,7 +1,6 @@
 <script setup>
 import { InformationCircleIcon, ExclamationTriangleIcon } from '@heroicons/vue/24/solid';
-import EnableLogo from '@/assets/enable-sm.png'
-
+import Image from '../helpers/Image.vue';
 const props = defineProps({
     info: Boolean,
     warning: Boolean,
@@ -16,8 +15,8 @@ const props = defineProps({
         'from-red-50 border-red-100 text-red-900': warning,
         'from-teal-50 border-teal-100 text-teal-900': enable,
     }, sidebar ? '-mx-5 border-t' : 'border rounded'">
-        <img :src="EnableLogo" v-if="enable" alt="Enable Logo"
-            class="w-24 h-max -mt-6 p-1 mb-2 bg-white rounded shadow">
+        <Image file-name="enable-sm.png" v-if="enable" alt="Enable Logo"
+            class="w-24 h-max -mt-6 p-1 mb-2 bg-white rounded shadow" />
         <ExclamationTriangleIcon v-else-if="warning" class="w-7 h-7 -mt-7 text-red-400" />
         <InformationCircleIcon v-else class="w-7 h-7 -mt-7 text-blue-400" />
         <p class="pb-5 text-sm">

@@ -2,7 +2,7 @@
 import Page from '@/components/Page.vue';
 import Button from 'primevue/button';
 import { DocumentArrowDownIcon, ArrowRightCircleIcon } from '@heroicons/vue/24/solid';
-import MoodleLogo from '@/assets/moodle.png';
+import Image from '@/components/helpers/Image.vue';
 import Pbutton from '@/components/buttons/Pbutton.vue';
 import { useCourseStore } from '@/stores/course.js';
 import { slugify } from '@/utils/utils';
@@ -54,7 +54,7 @@ const exportJSON = () => {
         <div class="flex justify-center items-center h-full">
             <div class="flex gap-3">
                 <div class="p-5 bg-white border w-56 rounded-lg flex flex-col gap-10 items-center justify-between">
-                    <img :src="MoodleLogo" class="w-32" alt="University of Portsmouth Logo"></img>
+                    <Image file-name="moodle.png" class="w-32" alt="University of Portsmouth Logo"/>
                     <Pbutton solid label="Publish to Moodle" />
                 </div>
                 <div class="p-5 bg-white border w-56 rounded-lg flex flex-col gap-10 items-center justify-between">

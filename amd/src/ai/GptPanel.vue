@@ -7,7 +7,6 @@ import Activity from '@/classes/Activity';
 import { useCourseStore } from '@/stores/course.js'
 import Textarea from 'primevue/textarea';
 import { SparklesIcon } from '@heroicons/vue/24/solid';
-import EnableLogo from '@/assets/enable-sm.png'
 import Pbutton from '@/components/buttons/Pbutton.vue';
 const props = defineProps({
     weekIndex: Number
