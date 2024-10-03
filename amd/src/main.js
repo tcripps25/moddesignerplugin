@@ -12,7 +12,9 @@ import Aura from '@primevue/themes/aura'
 import AuraPreset from './presets/aura'
 
 // Create a new Vue application instance
-const app = createApp(App)
+const app = createApp(App, {
+  siteRoot: window.MOODLE_SITE_ROOT
+})
 
 // Use Pinia, Router, and PrimeVue
 app.use(createPinia())
@@ -102,6 +104,8 @@ shadowRoot.appendChild(modalTarget)
 
 // Expose shadowModalTarget globally
 app.config.globalProperties.$shadowModalTarget = modalTarget
+// Expose appRoot globally
+app.config.globalProperties.$siteRoot = window.MOODLE_SITE_ROOT || '/';  // Fallback to root if not available
 
 // Mount the Vue app to the new container inside the Shadow DOM
 app.mount(vueAppContainer)

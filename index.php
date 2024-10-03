@@ -35,6 +35,11 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Module Designer');
 $PAGE->set_heading('');
 
+// This is the inline script that will pass the site root to the Vue app
+echo '<script>
+    window.MOODLE_SITE_ROOT = "' . $CFG->wwwroot . '";
+</script>';
+
 // Require JavaScript for Vue App
 $PAGE->requires->js_call_amd('local_moddesigner/bundle');
 

@@ -25,12 +25,12 @@ const menu = ref([
       {
         label: menu1title,
         icon: 'pi pi-question-circle',
-        route: '/'
+        route: { name: 'about' }
       },
       {
         label: menu2title,
         icon: 'pi pi-info-circle',
-        route: '/help'
+        route: { name: 'help' }
       },
     ]
   },
@@ -39,24 +39,24 @@ const menu = ref([
       {
         label: mainmenu1title,
         icon: 'pi pi-cog',
-        route: '/setup'
+        route: { name: 'setup' }
       },
       {
         label: mainmenu2title,
         icon: 'pi pi-palette',
         child: 'design-menu',
-        route: '/design',
+        route: { name: 'design' },
         active: isDesignActive
       },
       {
         label: mainmenu3title,
         icon: 'pi pi-chart-pie',
-        route: '/visualise'
+        route: { name: 'visualise' }
       },
       {
         label: mainmenu4title,
         icon: 'pi pi-file-export',
-        route: '/publish'
+        route: { name: 'publish' }
       },
     ]
   },

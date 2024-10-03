@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, getCurrentInstance } from "vue";
 import { RouterView } from "vue-router";
 import 'primeicons/primeicons.css'
 import MainSidebar from "@/components/MainSidebar.vue"
@@ -10,17 +10,18 @@ import axios from "axios";
 import { useCourseStore } from '@/stores/course.js';
 const course = useCourseStore();
 
-
+// Access global property
+const siteRoot = getCurrentInstance().appContext.config.globalProperties.$siteRoot;
 const buildMode = ref(process.env.NODE_ENV === 'production');
 
 const buildClasses = buildMode.value ? '-mt-[60px] pt-[60px]' : '';
 
-let baseURL = '';
+
 
 // Function to fetch modules for activity selector from Moodle
 async function fetchModules() {
   try {
-    const response = await axios.get(baseURL + '/moodle/local/moddesigner/ajax.php?sesskey=' + M.cfg.sesskey);
+    const response = await axios.get(siteRoot + '/local/moddesigner/ajax.php?sesskey=' + M.cfg.sesskey);
     course.moodleActivities = response.data.modules; // Assign the fetched modules data to the reactive variable
     console.log(course.moodleActivities); // Debugging - log the modules to the console
   } catch (error) {
@@ -31,6 +32,7 @@ async function fetchModules() {
 
 // onMounted lifecycle hook
 onMounted(() => {
+  console.log(siteRoot);
   if (buildMode.value) {
     require(['core/config'], function (config) {
       const baseURL = config.wwwroot;

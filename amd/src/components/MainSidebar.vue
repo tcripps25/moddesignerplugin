@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onBeforeMount } from "vue";
-import Logo from "@/assets/uop_notext.png";
+import { ref, onBeforeMount, getCurrentInstance } from "vue";
+
 import InputText from "primevue/inputtext";
 import MainMenu from "./menu/MainMenu.vue";
 import { useCourseStore } from "@/stores/course.js";
@@ -10,6 +10,10 @@ import ImportCourseButton from "@/components/buttons/ImportCourseButton.vue";
 import ResetCourseButton from "@/components/buttons/ResetCourseButton.vue";
 import MoodleString from "@/components/helpers/MoodleString.vue";
 
+// Access global property
+const siteRoot = getCurrentInstance().appContext.config.globalProperties.$siteRoot;
+
+const Logo = ref(`${siteRoot}/local/moddesigner/amd/src/assets/uop_notext.png`);
 
 const course = useCourseStore();
 const designMenu = useDesignMenuStore();

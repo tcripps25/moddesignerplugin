@@ -1,26 +1,30 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import VisualiseView from '@/views/VisualiseView.vue'
-import ScheduleView from '@/views/ScheduleView.vue'
-import DesignView from '@/views/DesignView.vue'
-import AboutView from '@/views/AboutView.vue'
-import HelpView from '@/views/HelpView.vue'
-import SetupView from '@/views/SetUpView.vue'
-import SingleWeek from '@/components/SingleWeek.vue'
-import SingleActivity from '@/components/SingleActivity.vue'
-import { useCourseStore } from '@/stores/course.js'
-import PublishView from '@/views/PublishView.vue'
-import ActivityPlaceholder from '@/components/ActivityPlaceholder.vue'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import VisualiseView from '@/views/VisualiseView.vue';
+import ScheduleView from '@/views/ScheduleView.vue';
+import DesignView from '@/views/DesignView.vue';
+import AboutView from '@/views/AboutView.vue';
+import HelpView from '@/views/HelpView.vue';
+import SetupView from '@/views/SetUpView.vue';
+import SingleWeek from '@/components/SingleWeek.vue';
+import SingleActivity from '@/components/SingleActivity.vue';
+import { useCourseStore } from '@/stores/course.js';
+import PublishView from '@/views/PublishView.vue';
+import ActivityPlaceholder from '@/components/ActivityPlaceholder.vue';
+
+// Set siteRoot and appPath for your application
+const siteRoot = window.MOODLE_SITE_ROOT; // Base URL
+const appPath = '/local/moddesigner'; // App-specific path
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
-      path: '/',
+      path: appPath + '/',
       name: 'about',
       component: AboutView
     },
     {
-      path: '/help',
+      path: appPath + '/help',
       name: 'help',
       component: HelpView
     },
@@ -44,10 +48,10 @@ const router = createRouter({
               name: 'week-detail',
               component: SingleWeek,
               props: (route) => {
-                const course = useCourseStore()
-                const index = parseInt(route.params.index)
-                const week = course.weeks[index]
-                return { index, week }
+                const course = useCourseStore();
+                const index = parseInt(route.params.index);
+                const week = course.weeks[index];
+                return { index, week };
               },
               children: [
                 {
@@ -55,11 +59,11 @@ const router = createRouter({
                   name: 'activity-detail',
                   component: SingleActivity,
                   props: (route) => {
-                    const course = useCourseStore()
-                    const activityIndex = parseInt(route.params.activityIndex)
-                    const weekIndex = parseInt(route.params.index) // get index from parent route params
-                    const activity = course.weeks[weekIndex].activities[activityIndex]
-                    return { weekIndex, activityIndex, activity }
+                    const course = useCourseStore();
+                    const activityIndex = parseInt(route.params.activityIndex);
+                    const weekIndex = parseInt(route.params.index);
+                    const activity = course.weeks[weekIndex].activities[activityIndex];
+                    return { weekIndex, activityIndex, activity };
                   }
                 },
                 {
@@ -67,10 +71,10 @@ const router = createRouter({
                   component: ActivityPlaceholder,
                   name: 'activity-placeholder',
                   props: (route) => {
-                    const course = useCourseStore()
-                    const weekIndex = parseInt(route.params.index) // get index from parent route params
-                    const activities = course.weeks[weekIndex].activities
-                    return { activities, weekIndex }
+                    const course = useCourseStore();
+                    const weekIndex = parseInt(route.params.index);
+                    const activities = course.weeks[weekIndex].activities;
+                    return { activities, weekIndex };
                   }
                 }
               ]
@@ -79,7 +83,6 @@ const router = createRouter({
         }
       ]
     },
-
     {
       path: '/visualise',
       name: 'visualise',
@@ -91,6 +94,6 @@ const router = createRouter({
       component: PublishView
     }
   ]
-})
+});
 
-export default router
+export default router;

@@ -8,7 +8,7 @@ export default defineConfig(({ command }) => {
 
   return {
     plugins: [vue()],
-    base: isBuild ? '/moodle/local/moddesigner/amd/build/' : './', // Set base for production and relative for development
+    base: '/',
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
