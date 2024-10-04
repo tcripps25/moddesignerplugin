@@ -12,11 +12,11 @@ import PublishView from '@/views/PublishView.vue';
 import ActivityPlaceholder from '@/components/ActivityPlaceholder.vue';
 
 // Set siteRoot and appPath for your application
-const siteRoot = window.MOODLE_SITE_ROOT; // Base URL
+const siteRoot = window.MOODLE_SITE_ROOT || '/'; // Base URL
 const appPath = '/local/moddesigner'; // App-specific path
 
 const router = createRouter({
-  history: createWebHashHistory(siteRoot),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
