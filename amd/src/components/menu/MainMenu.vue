@@ -6,6 +6,7 @@ import DesignMenu from '@/components/menu/DesignMenu.vue'
 import MenuItem from "./MenuItem.vue";
 const route = useRoute();
 const course = useCourseStore()
+import { InformationCircleIcon, QuestionMarkCircleIcon, PaintBrushIcon, DocumentTextIcon, ChartPieIcon, ArrowUpOnSquareStackIcon } from "@heroicons/vue/24/outline";
 const isDesignActive = computed(() => route.path.startsWith('/design'));
 import { useFetchMoodleString } from "@/utils/fetchMoodleString";
 
@@ -24,12 +25,12 @@ const menu = ref([
     items: [
       {
         label: menu1title,
-        icon: 'pi pi-question-circle',
+        icon: InformationCircleIcon,
         route: { name: 'about' }
       },
       {
         label: menu2title,
-        icon: 'pi pi-info-circle',
+        icon: QuestionMarkCircleIcon,
         route: { name: 'help' }
       },
     ]
@@ -38,24 +39,24 @@ const menu = ref([
     items: [
       {
         label: mainmenu1title,
-        icon: 'pi pi-cog',
+        icon: DocumentTextIcon,
         route: { name: 'setup' }
       },
       {
         label: mainmenu2title,
-        icon: 'pi pi-palette',
+        icon: PaintBrushIcon,
         child: 'design-menu',
         route: { name: 'design' },
         active: isDesignActive
       },
       {
         label: mainmenu3title,
-        icon: 'pi pi-chart-pie',
+        icon: ChartPieIcon,
         route: { name: 'visualise' }
       },
       {
         label: mainmenu4title,
-        icon: 'pi pi-file-export',
+        icon: ArrowUpOnSquareStackIcon,
         route: { name: 'publish' }
       },
     ]

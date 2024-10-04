@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref, getCurrentInstance } from "vue";
 import { RouterView } from "vue-router";
-import 'primeicons/primeicons.css'
+
 import MainSidebar from "@/components/MainSidebar.vue"
 import ConfirmDialog from 'primevue/confirmdialog';
 import Toast from 'primevue/toast';

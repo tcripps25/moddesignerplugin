@@ -8,13 +8,14 @@ export default defineConfig(({ command }) => {
 
   return {
     plugins: [vue()],
-    base: '',
+    base: './',  
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
     build: {
+      targets: ['defaults', 'not IE 11'],
       outDir: path.resolve(__dirname, '../amd/build'), // Output directory
       rollupOptions: {
         input: path.resolve(__dirname, 'src/main.js'), // Entry file
