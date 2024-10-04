@@ -8,8 +8,6 @@ import ConfirmationService from 'primevue/confirmationservice'
 import ToastService from 'primevue/toastservice'
 import DialogService from 'primevue/dialogservice'
 import 'primeicons/primeicons.css'
-import { definePreset } from '@primevue/themes'
-import Aura from '@primevue/themes/aura'
 import AuraPreset from './presets/aura'
 
 // Create a new Vue application instance

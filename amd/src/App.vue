@@ -46,14 +46,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex grow h-screen overflow-hidden" :class="buildClasses">
-    <MainSidebar />
-    <main class="flex grow bg-white">
-      <RouterView class="flex grow relative" />
-    </main>
+  <div>
+    <div class="flex grow h-screen overflow-hidden" :class="buildClasses">
+      <MainSidebar />
+      <main class="flex grow bg-white">
+        <RouterView class="flex grow relative" />
+      </main>
+    </div>
+    <ConfirmDialog class="!rounded">
+    </ConfirmDialog>
+    <Toast />
+    <DynamicDialog />
   </div>
-  <ConfirmDialog class="!rounded">
-  </ConfirmDialog>
-  <Toast />
-  <DynamicDialog />
 </template>
