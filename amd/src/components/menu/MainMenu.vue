@@ -7,6 +7,14 @@ import MenuItem from "./MenuItem.vue";
 const route = useRoute();
 const course = useCourseStore()
 import { InformationCircleIcon, QuestionMarkCircleIcon, PaintBrushIcon, DocumentTextIcon, ChartPieIcon, ArrowUpOnSquareStackIcon } from "@heroicons/vue/24/outline";
+import {
+  InformationCircleIcon as SolidInformationCircleIcon,
+  QuestionMarkCircleIcon as SolidQuestionMarkCircleIcon,
+  PaintBrushIcon as SolidPaintBrushIcon,
+  DocumentTextIcon as SolidDocumentTextIcon,
+  ChartPieIcon as SolidChartPieIcon,
+  ArrowUpOnSquareStackIcon as SolidArrowUpOnSquareStackIcon
+} from "@heroicons/vue/24/solid";
 const isDesignActive = computed(() => route.path.startsWith('/design'));
 import { useFetchMoodleString } from "@/utils/fetchMoodleString";
 
@@ -26,11 +34,13 @@ const menu = ref([
       {
         label: menu1title,
         icon: InformationCircleIcon,
+        selectedIcon: SolidInformationCircleIcon,
         route: { name: 'about' }
       },
       {
         label: menu2title,
         icon: QuestionMarkCircleIcon,
+        selectedIcon: SolidQuestionMarkCircleIcon,
         route: { name: 'help' }
       },
     ]
@@ -40,11 +50,13 @@ const menu = ref([
       {
         label: mainmenu1title,
         icon: DocumentTextIcon,
+        selectedIcon: SolidDocumentTextIcon,
         route: { name: 'setup' }
       },
       {
         label: mainmenu2title,
         icon: PaintBrushIcon,
+        selectedIcon: SolidPaintBrushIcon,
         child: 'design-menu',
         route: { name: 'design' },
         active: isDesignActive
@@ -52,11 +64,13 @@ const menu = ref([
       {
         label: mainmenu3title,
         icon: ChartPieIcon,
+        selectedIcon: SolidChartPieIcon,
         route: { name: 'visualise' }
       },
       {
         label: mainmenu4title,
         icon: ArrowUpOnSquareStackIcon,
+        selectedIcon: SolidArrowUpOnSquareStackIcon,
         route: { name: 'publish' }
       },
     ]
