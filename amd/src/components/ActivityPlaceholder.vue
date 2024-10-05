@@ -6,6 +6,7 @@ import { useCourseStore } from '@/stores/course';
 import { computed } from 'vue';
 import Dialog from 'primevue/dialog';
 import CreateActivity from "./CreateActivity.vue";
+import { ArrowRightIcon } from "@heroicons/vue/16/solid";
 const course = useCourseStore()
 
 const props = defineProps({
@@ -37,20 +38,28 @@ const closeDialog = (index) => {
         <div class="grid lg:grid-cols-2 transition-all xl:grid-cols-3 md:grid-cols-1 gap-5">
             <div @click="openDialog(index)" v-for="(activity, index) in activities">
                 <Pbutton card :aria-label="activity.title"
-                    class="flex flex-col p-5 h-44 w-full bg-gradient-to-br from-slate-100 to-purple-300 rounded-lg shadow hover:shadow-lg hover:scale-[102%] hover:ring-2 transition-all">
+                    class="flex flex-col p-4 h-44 w-full !bg-slate-100 overflow-hidden border border-sky-300 rounded-lg shadow hover:shadow-lg hover:scale-[102%] hover:ring-4 transition-all">
                     <template #icon>
                         <div class="flex flex-col text-start grow w-full">
-                            <h4 class="text-sky-800 font-medium text-xl w-full h-full">{{ activity.title }}</h4>
-                            <div class="mt-auto flex items-center">
+                            <h4 class="text-sky-800 text-lg line-clamp-1 overflow-ellipsis font-semibold">
+                                {{ activity.title }}
+                            </h4>
+                            <div class="flex flex-col">
                                 <p class="text-sky-800 text-lg">{{ activity.duration }} <span
                                         class="text-base text-sky-800/80">mins</span></p>
+
+                            </div>
+                            <div class="flex justify-between mt-auto pt-5">
                                 <div v-if="activity.selectedTypes && activity.selectedTypes.length > 0"
-                                    class="bg-white/80 h-7 p-1 rounded-s-full w-max ml-auto -mr-5 flex gap-2">
+                                    class=" rounded-full w-max  items-center flex gap-2">
                                     <div v-for="(type) in activity.selectedTypes" class="rounded-full w-5 h-5 p-1"
                                         :style="'background-color:' + course.getColorByLabel(type) + ';'">
+
                                     </div>
                                 </div>
+                                <ArrowRightIcon class="text-sky-50 ml-auto bg-sky-800 rounded p-1 w-5 h-5 " />
                             </div>
+
                         </div>
                     </template>
                 </Pbutton>
