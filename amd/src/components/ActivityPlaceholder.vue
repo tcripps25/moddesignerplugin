@@ -37,7 +37,7 @@ const closeDialog = (index) => {
         <div class="grid lg:grid-cols-2 transition-all xl:grid-cols-3 md:grid-cols-1 gap-5">
             <div @click="openDialog(index)" v-for="(activity, index) in activities">
                 <Pbutton card :aria-label="activity.title"
-                    class="flex flex-col p-5 h-44 w-full bg-gradient-to-br from-slate-100 to-purple-200 rounded-lg shadow hover:shadow-lg hover:scale-[102%] hover:ring-2 transition-all">
+                    class="flex flex-col p-5 h-44 w-full bg-gradient-to-br from-slate-100 to-purple-300 rounded-lg shadow hover:shadow-lg hover:scale-[102%] hover:ring-2 transition-all">
                     <template #icon>
                         <div class="flex flex-col text-start grow w-full">
                             <h4 class="text-sky-800 font-medium text-xl w-full h-full">{{ activity.title }}</h4>

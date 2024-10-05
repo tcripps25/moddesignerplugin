@@ -16,7 +16,7 @@ const siteRoot = window.MOODLE_SITE_ROOT || '/'; // Base URL
 const appPath = '/local/moddesigner'; // App-specific path
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory(siteRoot),
   routes: [
     {
       path: '/',

@@ -27,7 +27,7 @@ const toggleShowField = () => {
 
 <template>
     <div id="sidebar"
-        class="px-5 py-5 flex flex-col gap-3 bg-slate-50 border-r h-screen overflow-x-auto max-w-72 min-w-72 text-sm">
+        class="px-5 py-5 flex flex-col gap-3 bg-slate-100 border-r h-screen overflow-x-auto max-w-72 min-w-72 text-sm">
         <header class="text-slate-800 flex flex-col">
             <div class="flex justify-start gap-5 items-center mb-3">
                 <Image @click="toggleShowField" file-name="uop_notext.png" classes="h-11"

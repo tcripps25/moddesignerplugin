@@ -14,7 +14,8 @@ import AuraPreset from './presets/aura'
 const app = createApp(App, {
   siteRoot: window.MOODLE_SITE_ROOT
 })
-
+// Expose appRoot globally
+app.config.globalProperties.$siteRoot = window.MOODLE_SITE_ROOT || '/';  // Fallback to root if not available
 // Use Pinia, Router, and PrimeVue
 app.use(createPinia())
 app.use(router)
@@ -86,38 +87,55 @@ app.use(PrimeVue, {
 })
 
 // Find the mounting point in the DOM
-const appContainer = document.getElementById('app')
+const appContainer = document.getElementById('app');
 
-// Create a Shadow DOM
-const shadowRoot = appContainer.attachShadow({ mode: 'open' })
+// Create a modal target (used for dialogs, modals)
+let modalTarget;
 
-// Create a div for the Vue app inside the Shadow DOM
-const vueAppContainer = document.createElement('div')
-vueAppContainer.id = 'vue-app'
-shadowRoot.appendChild(vueAppContainer)
+if (import.meta.env.MODE !== 'development') {
+  // Production mode - Use Shadow DOM
+  const shadowRoot = appContainer.attachShadow({ mode: 'open' });
 
-// Create a teleport target inside the Shadow DOM for modals/dialogs
-const modalTarget = document.createElement('div')
-modalTarget.id = 'modal-target'
-shadowRoot.appendChild(modalTarget)
+  // Create a div for the Vue app inside the Shadow DOM
+  const vueAppContainer = document.createElement('div');
+  vueAppContainer.id = 'vue-app';
+  shadowRoot.appendChild(vueAppContainer);
 
-// Expose shadowModalTarget globally
-app.config.globalProperties.$shadowModalTarget = modalTarget
-// Expose appRoot globally
-app.config.globalProperties.$siteRoot = window.MOODLE_SITE_ROOT || '/';  // Fallback to root if not available
+  // Create a teleport target inside the Shadow DOM for modals/dialogs
+  modalTarget = document.createElement('div');
+  modalTarget.id = 'modal-target';
+  shadowRoot.appendChild(modalTarget);
 
-// Mount the Vue app to the new container inside the Shadow DOM
-app.mount(vueAppContainer)
+  // Mount the Vue app to the new container inside the Shadow DOM
+  app.mount(vueAppContainer);
 
-// Function to append styles from the main document to the shadow root
-function appendStylesToShadowDOM() {
-  const styles = Array.from(document.querySelectorAll('style')) // Get all <style> tags from the main document
-  styles.forEach((style) => {
-    const styleClone = document.createElement('style') // Create a new style element
-    styleClone.textContent = style.textContent // Copy the content from the main style
-    shadowRoot.appendChild(styleClone) // Append to the Shadow DOM
-  })
+  // Expose shadowModalTarget globally
+  app.config.globalProperties.$shadowModalTarget = modalTarget;
+
+  // Function to append styles from the main document to the shadow root
+  function appendStylesToShadowDOM() {
+    const styles = Array.from(document.querySelectorAll('style')); // Get all <style> tags from the main document
+    styles.forEach((style) => {
+      const styleClone = document.createElement('style'); // Create a new style element
+      styleClone.textContent = style.textContent; // Copy the content from the main style
+      shadowRoot.appendChild(styleClone); // Append to the Shadow DOM
+    });
+  }
+
+  // Call the function to append styles
+  appendStylesToShadowDOM();
+
+} else {
+  // Development mode - No Shadow DOM
+  // Create modal target in regular DOM for dialogs
+  modalTarget = document.createElement('div');
+  modalTarget.id = 'modal-target';
+  document.body.appendChild(modalTarget);
+
+  // Mount Vue app directly in the regular DOM
+  app.mount(appContainer);
+
+  // Expose modalTarget globally (in the regular DOM)
+  app.config.globalProperties.$shadowModalTarget = modalTarget;
 }
 
-// Call the function to append styles
-appendStylesToShadowDOM()
