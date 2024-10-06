@@ -10,10 +10,6 @@ import PieChart from '@/components/charts/PieChart.vue';
 import TabPanel from 'primevue/tabpanel';
 import TabView from 'primevue/tabview';
 const course = useCourseStore()
-
-
-
-
 </script>
 
 <template>
@@ -67,8 +63,6 @@ const course = useCourseStore()
 
                   <div class="h-12 -my-5 -mx-5 p-3 flex items-center justify-center "
                     :style="{ backgroundColor: `${val.color}` }">
-
-
                   </div>
 
                 </Panel>

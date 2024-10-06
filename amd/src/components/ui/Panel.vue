@@ -16,6 +16,7 @@ const props = defineProps({
     card: Boolean,
     collapse: Boolean,
     link: String,
+    restrictContent: Boolean,
 });
 
 const titleSlug = () => {
@@ -85,7 +86,7 @@ const toggleSection = () => {
                             <slot name="lhcontent" />
                         </div>
                     </Transition>
-                    <div class="grow">
+                    <div class="grow" :class="restrictContent ? 'max-w-2xl' : ''">
                         <slot></slot>
                     </div>
                     <Transition name="right" mode="out-in">

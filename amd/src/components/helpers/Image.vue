@@ -17,7 +17,7 @@ const isDev = import.meta.env.MODE === 'development';
 const image = ref(
     isDev
         ? `./src/assets/${props.fileName}` // Dev URL
-        : `${siteRoot}/local/moddesigner/amd/src/assets/${props.fileName}` // Prod URL
+        : `${siteRoot}/local/moddesigner/amd/build/assets/${props.fileName}` // Prod URL
 );
 </script>
 
