@@ -9,6 +9,7 @@ import Panel from '@/components/ui/Panel.vue';
 import PieChart from '@/components/charts/PieChart.vue';
 import TabPanel from 'primevue/tabpanel';
 import TabView from 'primevue/tabview';
+import ModulePreview from '@/components/ModulePreview.vue';
 const course = useCourseStore()
 </script>
 
@@ -19,10 +20,9 @@ const course = useCourseStore()
       <template v-slot:page-header>
         <PageHeader title="Module Overview" section-title="Visualise" />
       </template>
+      <!-- <ModulePreview /> -->
 
       <div class="grid sm:grid-cols-1 2xl:grid-cols-3 gap-6">
-
-
         <Panel :title="'Activities per week'" class="col-span-2">
           <LineChart :datax="course.weekNames" :datay="course.activitiesPerWeek">
             <p class="mb-3">The number of Activities you have allocated to each week.</p>

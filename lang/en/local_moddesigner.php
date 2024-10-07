@@ -16,7 +16,7 @@ $string['mainmenu2'] = 'Design';
 $string['mainmenu3'] = 'Visualise';
 $string['mainmenu4'] = 'Publish';
 // Design Menu
-$string['designmenutitle1'] = 'Module Schedule';
+$string['designmenutitle1'] = 'Visual Designer';
 $string['addweekbtn'] = 'Add Week';
 
 // Views

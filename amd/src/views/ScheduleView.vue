@@ -46,28 +46,51 @@ const items = [
 
 <template>
   <div>
-    <Page v-if="isDesignPage">
+    <Page v-if="isDesignPage" sidebar-title="Module elements">
+      <template #sidebar>
+        <p>The building blocks of a Moodle module.</p>
+        <Panel collapse title="Schedule">
+          <template #lhcontent>
+            <div class="sticky top-0 flex justify-end">
+              <Pbutton ghost @click="course.incrementWeek()" :label=addweekbtnlabel class="self-end">
+              </Pbutton>
+            </div>
+          </template>
+        </Panel>
+        <Panel collapse title="Activity Design">
+          <template #lhcontent>
+            <div class="sticky top-0 flex justify-end">
+              <Pbutton ghost @click="course.incrementWeek()" :label=addweekbtnlabel class="self-end">
+              </Pbutton>
+            </div>
+          </template>
+        </Panel>
+        <Panel collapse title="Moodle tools">
+          <template #lhcontent>
+            <div class="sticky top-0 flex justify-end">
+              <Pbutton ghost @click="course.incrementWeek()" :label=addweekbtnlabel class="self-end">
+              </Pbutton>
+            </div>
+          </template>
+        </Panel>
+      </template>
       <template v-slot:page-header>
         <PageHeader :sectionTitle=sectionTitle :title=pageTitle />
       </template>
-      <Panel :title=schedulepaneltitle>
-        <div class="flex flex-col gap-5 ">
+      <Panel restrict-content="" :title=schedulepaneltitle>
+        <div class="flex flex-col gap-5">
           <TransitionGroup>
             <WeekSummary v-for="(week, weekIndex) in course.weeks" :key="weekIndex" :week="week"
               :weekIndex="weekIndex" />
           </TransitionGroup>
 
         </div>
-        <template #lhcontent>
-          <div class="sticky top-0 flex justify-end">
-            <Pbutton ghost @click="course.incrementWeek()" :label=addweekbtnlabel class="self-end">
-            </Pbutton>
-          </div>
-        </template>
+
       </Panel>
 
 
     </Page>
+    <!-- This displays the week page if it's not the visual design page (might be a better way to do this) -->
     <router-view v-else></router-view>
 
   </div>
